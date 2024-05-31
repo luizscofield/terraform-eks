@@ -5,7 +5,7 @@ resource "aws_vpc" "tf-eks-vpc" {
   enable_dns_hostnames = true
 
   tags = merge(
-    local.tags,
+    local.global_tags,
     {
       Name = "tf-eks-vpc"
     }

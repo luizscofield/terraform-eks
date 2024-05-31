@@ -1,29 +1,27 @@
-resource "aws_subnet" "tf-eks-subnet-pub-1a" {
+resource "aws_subnet" "tf-eks-subnet-priv-1a" {
   vpc_id                  = aws_vpc.tf-eks-vpc.id
   cidr_block              = cidrsubnet(var.vpc_cidr_block, 8, 1)
   availability_zone       = "${data.aws_region.current.name}a"
-  map_public_ip_on_launch = true
 
   tags = merge(
     local.global_tags,
-    local.public_subnet_tags,
+    local.private_subnet_tags,
     {
-      Name                     = "tf-subnet-pub-a"
+      Name                     = "tf-subnet-priv-a"
     }
   )
 }
 
-resource "aws_subnet" "tf-eks-subnet-pub-1b" {
+resource "aws_subnet" "tf-eks-subnet-priv-1b" {
   vpc_id                  = aws_vpc.tf-eks-vpc.id
   cidr_block              = cidrsubnet(var.vpc_cidr_block, 8, 2)
   availability_zone       = "${data.aws_region.current.name}b"
-  map_public_ip_on_launch = true
 
   tags = merge(
     local.global_tags,
-    local.public_subnet_tags,
+    local.private_subnet_tags,
     {
-      Name                     = "tf-subnet-pub-b"
+      Name                     = "tf-subnet-priv-b"
     }
   )
 }
