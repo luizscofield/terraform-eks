@@ -8,8 +8,3 @@ resource "aws_internet_gateway" "tf-eks-igw" {
     }
   )
 }
-
-resource "aws_internet_gateway_attachment" "tf-eks-igw-attachment" {
-  internet_gateway_id = aws_internet_gateway.tf-eks-igw.id
-  vpc_id              = aws_vpc.tf-eks-vpc.id
-}
