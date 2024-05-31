@@ -1,13 +1,13 @@
 resource "aws_vpc" "tf-eks-vpc" {
 
-  # CIDR block of the VPC
-  cidr_block = "10.0.0.0/16"
-  # Enabling DNS resolution in the VPC
-  enable_dns_support = true
-  # Enabling DNS hostnames for all hosts
+  cidr_block           = var.vpc_cidr_block
+  enable_dns_support   = true
   enable_dns_hostnames = true
 
-  tags = {
-    Name = "tf-eks-vpc"
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name = "tf-eks-vpc"
+    }
+  )
 }
