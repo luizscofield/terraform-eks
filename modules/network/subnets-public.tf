@@ -5,7 +5,7 @@ resource "aws_subnet" "tf-eks-subnet-pub-1a" {
   map_public_ip_on_launch = true
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     local.public_subnet_tags,
     {
       Name = "${var.project_name}-subnet-pub-a"
@@ -20,7 +20,7 @@ resource "aws_subnet" "tf-eks-subnet-pub-1b" {
   map_public_ip_on_launch = true
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     local.public_subnet_tags,
     {
       Name = "${var.project_name}-subnet-pub-b"

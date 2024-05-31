@@ -4,7 +4,7 @@ resource "aws_subnet" "tf-eks-subnet-priv-1a" {
   availability_zone = "${data.aws_region.current.name}a"
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     local.private_subnet_tags,
     {
       Name = "${var.project_name}-subnet-priv-a"
@@ -23,7 +23,7 @@ resource "aws_subnet" "tf-eks-subnet-priv-1b" {
   availability_zone = "${data.aws_region.current.name}b"
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     local.private_subnet_tags,
     {
       Name = "${var.project_name}-subnet-priv-b"

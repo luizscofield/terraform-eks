@@ -7,7 +7,7 @@ resource "aws_route_table" "tf-eks-rt-pub" {
   }
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     {
       Name = "${var.project_name}-route-table-pub"
     }
@@ -23,7 +23,7 @@ resource "aws_route_table" "tf-eks-rt-priv-a" {
   }
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     {
       Name = "${var.project_name}-route-table-priv-${data.aws_region.current.name}a"
     }
@@ -39,7 +39,7 @@ resource "aws_route_table" "tf-eks-rt-priv-b" {
   }
 
   tags = merge(
-    local.global_tags,
+    var.global_tags,
     {
       Name = "${var.project_name}-route-table-priv-${data.aws_region.current.name}b"
     }
