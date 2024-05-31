@@ -27,3 +27,13 @@ resource "aws_subnet" "tf-eks-subnet-pub-1b" {
     }
   )
 }
+
+resource "aws_route_table_association" "tf-eks-rt-pub-assoc-a" {
+  subnet_id      = aws_subnet.tf-eks-subnet-pub-1a.id
+  route_table_id = aws_route_table.tf-eks-rt-pub.id
+}
+
+resource "aws_route_table_association" "tf-eks-rt-pub-assoc-b" {
+  subnet_id      = aws_subnet.tf-eks-subnet-pub-1b.id
+  route_table_id = aws_route_table.tf-eks-rt-pub.id
+}
