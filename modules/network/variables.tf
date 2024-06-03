@@ -11,6 +11,6 @@ variable "project_name" {
 }
 
 variable "global_tags" {
-  type = map
+  type        = map(any)
   description = "Tags to be used on the module."
 }
