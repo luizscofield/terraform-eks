@@ -3,6 +3,7 @@
 
 .terraform.lock.hcl
 backend.tf
+locals.tf
 
 # .tfstate files
 *.tfstate
