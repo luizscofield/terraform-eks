@@ -14,7 +14,28 @@ module "eks-cluster" {
 ```
 
 You need to specify at least the variables "project_name"and "global_tags".
-But I recommend you check the other available variables below.
+But I would recommend you to check out other available variables below.
+
+## What does this module create?
+
+This Terraform Module creates everything needed to run an EKS cluster.
+The resources created are:
+* 1 VPC
+* 4 subnets (2 public and 2 private)
+* 3 route tables
+* 1 internet gateway
+* 2 NAT gateways
+* 2 elastic IPs (used by the NAT gateways)
+* 1 EKS cluster
+* 3 IAM roles (one )
+* 1 IAM policy
+* 1 OIDC provider
+* 1 security group rule for the EKS cluster
+* 1 managed node group
+
+On top of the resources created, it will be deployed:
+* 1 kubernetes service account for the AWS Load Balancer Controller
+* 1 helm release (the AWS Load Balancer Controller)
 
 ## Requirements
 
