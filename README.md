@@ -7,7 +7,7 @@ Just add this repo as a module in your Terraform file.
 
 ```
 module "eks-cluster" {
-  source              = "github.com/luizscofield/terraform-eks?ref=v1.0"
+  source              = "github.com/luizscofield/terraform-eks?ref=v1.1"
   project_name        = var.project_name
   global_tags         = local.tags
 }
