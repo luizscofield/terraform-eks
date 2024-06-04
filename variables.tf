@@ -4,6 +4,12 @@ variable "vpc_cidr_block" {
   description = "VPC network CIDR block."
 }
 
+variable "region" {
+  type = string
+  default = "us-east-1"
+  description = "AWS Region used to create the resources."
+}
+
 variable "project_name" {
   type        = string
   default     = "terraform-eks"
@@ -19,23 +25,23 @@ variable "apiserver_access_cidr_block" {
 variable "node-group-max-size" {
   type        = number
   default     = 2
-  description = "Max size of the managed node group. Default is 2."
+  description = "Max size of the managed node group."
 }
 
 variable "node-group-min-size" {
   type        = number
   default     = 1
-  description = "Min size of the managed node group. Default is 1."
+  description = "Min size of the managed node group."
 }
 
 variable "node-group-desired-size" {
   type        = number
   default     = 1
-  description = "Max size of the managed node group. Default is 1."
+  description = "Desired size of the managed node group."
 }
 
 variable "instance_types" {
   type        = list(string)
   default     = ["t3.medium"]
-  description = "List of instance types used on the node group. Default is only t3.medium."
+  description = "List of instance types used on the node group."
 }
