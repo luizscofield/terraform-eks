@@ -32,4 +32,5 @@ module "eks-aws-load-balancer-controller" {
   project_name = var.project_name
   global_tags  = local.global_tags
   oidc         = module.eks-cluster.oidc
+  cluster_name = module.eks-cluster.cluster_name
 }
