@@ -22,11 +22,7 @@ resource "aws_iam_role" "tf-eks-cluster-role" {
   )
 }
 
-data "aws_iam_policy" "tf-eks-managed-cluster-policy" {
-  name = "AmazonEKSClusterPolicy"
-}
-
 resource "aws_iam_role_policy_attachment" "tf-eks-cluster-role-attachment" {
   role       = aws_iam_role.tf-eks-cluster-role.name
-  policy_arn = data.aws_iam_policy.tf-eks-managed-cluster-policy.arn
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }

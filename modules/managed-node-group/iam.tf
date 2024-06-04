@@ -22,29 +22,17 @@ resource "aws_iam_role" "tf-eks-node-group-role" {
   )
 }
 
-data "aws_iam_policy" "tf-eks-worker-node-policy" {
-  name = "AmazonEKSWorkerNodePolicy"
-}
-
 resource "aws_iam_role_policy_attachment" "tf-eks-node-group-worker-node-attachment" {
   role       = aws_iam_role.tf-eks-node-group-role.name
-  policy_arn = data.aws_iam_policy.tf-eks-worker-node-policy.arn
-}
-
-data "aws_iam_policy" "tf-eks-container-registry-policy" {
-  name = "AmazonEC2ContainerRegistryReadOnly"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "tf-eks-node-group-container-registry-attachment" {
   role       = aws_iam_role.tf-eks-node-group-role.name
-  policy_arn = data.aws_iam_policy.tf-eks-container-registry-policy.arn
-}
-
-data "aws_iam_policy" "tf-eks-cni-policy" {
-  name = "AmazonEKS_CNI_Policy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
 
 resource "aws_iam_role_policy_attachment" "tf-eks-node-group-cni-attachment" {
   role       = aws_iam_role.tf-eks-node-group-role.name
-  policy_arn = data.aws_iam_policy.tf-eks-cni-policy.arn
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
