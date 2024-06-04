@@ -23,4 +23,11 @@ resource "aws_eks_node_group" "tf-eks-managed-node-group" {
     aws_iam_role_policy_attachment.tf-eks-node-group-container-registry-attachment,
     aws_iam_role_policy_attachment.tf-eks-node-group-worker-node-attachment,
   ]
+
+  tags = merge(
+    var.global_tags,
+    {
+      Name = "${var.project_name}-node-group"
+    }
+  )
 }

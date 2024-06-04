@@ -14,4 +14,11 @@ resource "aws_eks_cluster" "tf-eks-cluster" {
   depends_on = [
     aws_iam_role_policy_attachment.tf-eks-cluster-role-attachment
   ]
+
+  tags = merge(
+    var.global_tags,
+    {
+      Name = "${var.project_name}-cluster"
+    }
+  )
 }
